@@ -8,7 +8,15 @@ function Items(props){
         <div>
             <ul>
                 {elementos.map((elem, index) => {
-                    return <li id={index}>{elem}</li>
+                    return (
+                        <li 
+                            key={index.toString()} 
+                            onClick={() => {
+                                props.onClick(index);
+                            }}>
+                            {elem}
+                        </li>
+                    );
                 })}
             </ul>
         </div>        

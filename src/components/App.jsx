@@ -25,17 +25,24 @@ function App(){
     function AddElement(){
         setListItems((prev) => {
             return [...prev, element];
-        });
+        });        
         setElement("");
     }
 
+    function RemoveItems(indexElementClicked){
+        setListItems( (prev) => {
+            return (prev.filter((elem, currentIndex)=> {
+                return indexElementClicked !== currentIndex;
+            }))
+        })
+    }
     
 
     return (
         <div className="container">
             <Header />            
             <Form onChange={handleChange} value={element} onClick={AddElement}/>
-            <Items items={listItems}/>
+            <Items items={listItems} onClick={RemoveItems}/>
         </div>
     );
 }
