@@ -1,11 +1,15 @@
 import React from 'react';
 
-function Items(){
+function Items(props){
+
+    const elementos = props.items;
 
     return (
         <div>
             <ul>
-                <li>Big Dog </li>
+                {elementos.map((elem, index) => {
+                    return <li id={index}>{elem}</li>
+                })}
             </ul>
         </div>        
     );

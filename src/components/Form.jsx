@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-function Form(){
+function Form(props){
 
     return (
         <div className="form">
-            <input type="text" />
-            <button>
+            <input type="text" onChange={props.onChange} value={props.value}/>
+            <button onClick={props.onClick}>
                 <span>Add</span>
             </button>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import Items from './Items';
 import Form from './Form';
@@ -13,11 +13,29 @@ import Form from './Form';
 
 function App(){
     
+    const[element, setElement] = useState("");
+    const[listItems, setListItems] = useState([]);
+
+    function handleChange(event){
+        const newValue = event.target.value;
+        setElement(newValue);
+       
+    }
+
+    function AddElement(){
+        setListItems((prev) => {
+            return [...prev, element];
+        });
+        setElement("");
+    }
+
+    
+
     return (
         <div className="container">
             <Header />            
-            <Form />
-            <Items />
+            <Form onChange={handleChange} value={element} onClick={AddElement}/>
+            <Items items={listItems}/>
         </div>
     );
 }
